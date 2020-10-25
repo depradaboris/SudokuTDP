@@ -130,9 +130,10 @@ public class GUISudoku extends JFrame {
 					Component boton = e.getComponent();
 					String codigo = ((JButton) boton).getActionCommand();
 					if(codigo=="inicio") {
-						iniciar();
 						panelCronometro.setEnabled(true);
 						panelCronometro.start();
+						iniciar();
+						
 						labelAviso.setText("JUEGO EN CURSO");
 						botonIniciar.setActionCommand("r");
 						botonIniciar.setText("RENDIRSE");
@@ -213,27 +214,27 @@ public class GUISudoku extends JFrame {
 		tablero[f][c].setBackground(Color.white);
 		if(f==0 || f==3 || f==6) {
 			if(c==0 || c==3 || c==6)
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(3, 3, 1, 1, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(3, 3, 1, 1, Color.RED));
 			else if(c==8)
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(3, 1, 1, 3, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(3, 1, 1, 3, Color.RED));
 			else
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(3, 1, 1, 1, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(3, 1, 1, 1, Color.RED));
 		}
 		else if(f==8) {
 			if(c==0 || c==3 || c==6)
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 3, 3, 1, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 3, 3, 1, Color.RED));
 			else if(c==8)
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 3, 3, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 3, 3, Color.RED));
 			else
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, Color.RED));
 		}
 		else {
 			if(c==0 || c==3 || c==6)
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 3, 1, 1, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 3, 1, 1, Color.RED));
 			else if(c==8)
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 3, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 3, Color.RED));
 			else
-				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
+				tablero[f][c].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
 		}
 	}
 	
@@ -249,7 +250,7 @@ public class GUISudoku extends JFrame {
         Celda celda = logica.getCelda(f,c);
         String[] repetidos;
         boolean ganado;
-        if(tablero[f][c].isEnabled()) //Permite actualizar los valores clickeados únicamente de los botones habilitados.
+        if(tablero[f][c].isEnabled()) 
         	celda.actualizar();
         logica.setVerificador(celda.getValor());
         tablero[f][c].setIcon(celda.getEntidadGrafica().getImagen());
